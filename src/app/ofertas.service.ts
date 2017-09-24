@@ -61,9 +61,13 @@ export class OfertasService {
         return new Promise((resolve, reject) => {
             /* Algum tipo de precessamento, que ao finalizar, 
             chama a função resolve ou a função reject  */
-            console.log('Passou por aqui?');
-            
-            resolve(this.ofertas)
+            //console.log('Passou por aqui?');
+            let deuCerto = false
+            if (deuCerto) {
+                resolve(this.ofertas)
+            }else {
+                reject({ codigoErro: 404, mensagemDeErro: 'Sevidor não encontrado!' })
+            }
         })
     }
 }
