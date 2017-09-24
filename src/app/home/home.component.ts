@@ -21,7 +21,10 @@ export class HomeComponent implements OnInit {
     //console.log(this.ofertas);
     this.ofertasService.getOfertas2()
       .then(
-        (ofertas: Oferta[]) => {this.ofertas},
+        (ofertas: Oferta[]) => {this.ofertas}
+        
+      )
+      .catch(
         (param: any) => {console.log(param)}
       )
   }

@@ -66,7 +66,7 @@ export class OfertasService {
             if (deuCerto) {
                 resolve(this.ofertas)
             }else {
-                reject({ codigoErro: 404, mensagemDeErro: 'Sevidor não encontrado!' })
+                reject({ codigoErro: 404, mensagemDeErro: 'Sevidor não encontrado! xyz' })
             }
         })
     }
