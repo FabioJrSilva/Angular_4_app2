@@ -80,7 +80,14 @@ export class OfertasService {
         .then((ofertas: Oferta[]) => {
             //fazer uma outra tratativa
             console.log('segundo then');
-            return ofertas            
+            return new Promise((resolve2, reject2) =>{
+                setTimeout(() => {resolve2( ofertas )}, 3000)
+            })            
+        })
+        .then((ofertas: Oferta[])=>{
+            console.log('terceiro then depois de aguardar 3 segundos');
+            
+            return ofertas
         })
     }
 }
