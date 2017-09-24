@@ -6,7 +6,7 @@ export class OfertasService {
         {
             id: 1,
             categoria: "restaurante",
-            titulo: "Super Burger",
+            titulo: "Super Burger teste 1",
             descricao_oferta: "Rodízio de Mini-hambúrger com opção de entrada.",
             anunciante: "Original Burger",
             valor: 29.90,
