@@ -2,13 +2,14 @@ import { Oferta } from './shared/oferta.model';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import 'rxjs/add/operator/toPromise'
 
 @Injectable()
 export class OfertasService {
 
-    constructor(private http: Http){}
+    constructor(private http: Http) { }
 
-    public ofertas: Array<Oferta> = [
+    /*public ofertas: Array<Oferta> = [
         {
             id: 1,
             categoria: "restaurante",
@@ -57,43 +58,13 @@ export class OfertasService {
                 { url: "/assets/ofertas/3/img6.jpg" }
             ]
         }
-    ]
+    ]*/
 
-    public getOfertas(): Array<Oferta> {
-        return this.ofertas;
-    }
-
-    public getOfertas2(): Promise<Oferta[]> {
-        return new Promise((resolve, reject) => {
-            /* Algum tipo de precessamento, que ao finalizar, 
-            chama a função resolve ou a função reject  */
-            //console.log('Passou por aqui?');
-            let deuCerto = true
-            
-            if (deuCerto) {
-                setTimeout(() => resolve(this.ofertas), 3000)
-
-            }else {
-                reject({ codigoErro: 404, mensagemDeErro: 'Sevidor não encontrado! xyz' })
-            }            
-        })
-
-        .then((ofertas: Oferta[]) => {
-            //fazer uma tratativa
-            console.log('primeiro then');
-            return ofertas          
-        })
-        .then((ofertas: Oferta[]) => {
-            //fazer uma outra tratativa
-            console.log('segundo then');
-            return new Promise((resolve2, reject2) =>{
-                setTimeout(() => {resolve2( ofertas )}, 3000)
-            })            
-        })
-        .then((ofertas: Oferta[])=>{
-            console.log('terceiro then depois de aguardar 3 segundos');
-            
-            return ofertas
-        })
+    public getOfertas(): Promise<Oferta[]> {
+        //efetuar uma requisição http
+        return this.http.get('http://localhost:3000/ofertas')
+            .toPromise()
+            .then((resposta: any) => resposta.json())
+        //retornar uma promise Oferta[]
     }
 }
